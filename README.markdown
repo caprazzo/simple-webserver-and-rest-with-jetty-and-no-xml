@@ -4,7 +4,7 @@ This is a very simple RESTful web service implemented using jetty embedded. I wr
 
 The answer is.... **NO**.
 
-It actually took three classes, 15 minutes and about 150 lines of code to implement 
+It actually took three classes, 15 minutes and about 150 lines of code to implement: 
 
 * a very (very) basic in-memory key-value store with a REST API 
 * a simple static file server
@@ -22,3 +22,18 @@ It actually took three classes, 15 minutes and about 150 lines of code to implem
 
 #### Unique id generator
 * GET /uuid - get a fresh uuid at each hit
+
+## compile and run
+
+### with maven
+
+mvn assembly:assembly
+java -jar target/simple-jetty-rest-1.0-SNAPSHOT-jar-with-dependencies.jar
+
+### with eclipse
+mvn eclipse:eclipse
+in eclipse file->import->existing project...
+then run main
+
+
+
