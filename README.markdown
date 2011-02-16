@@ -10,6 +10,17 @@ It actually took three classes, 15 minutes and about 150 lines of code to implem
 * a simple static file server
 * a unique id generator
 
+#### Benchmarks
+
+I gave the thing 8m memory (-Xmx8m - yes, megabytes) and tried to push it with apache ab:
+    
+    # 2000 threads doing 50000 put to the store (always same key) 
+    ab -u data.txt -c 2000 -n 50000 http://localhost:8180/store/somekey
+    
+    Time taken for tests:   30.371 seconds
+    Requests per second:    1646.31 [#/sec] (mean)    
+    
+
 #### Key-Value store api
 * GET /store/<key> - the value associated with key or 404
 * PUT /store/<key> - put the body of the request as value of key
@@ -35,6 +46,8 @@ It actually took three classes, 15 minutes and about 150 lines of code to implem
     mvn eclipse:eclipse
     in eclipse file->import->existing project...
     then run main
+
+### Benchmarks
 
 
 
