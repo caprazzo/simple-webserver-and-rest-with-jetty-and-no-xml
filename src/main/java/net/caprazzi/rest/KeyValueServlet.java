@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 @SuppressWarnings("serial")
 public class KeyValueServlet extends HttpServlet {
 	
-	private final ConcurrentHashMap<String, byte[]> kv
+	private static final ConcurrentHashMap<String, byte[]> kv
 		= new ConcurrentHashMap<String,byte[]>();
 	
 	@Override
