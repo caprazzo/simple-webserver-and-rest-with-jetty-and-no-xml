@@ -47,7 +47,5 @@ I gave the thing 8m memory (-Xmx8m - yes, megabytes) and tried to push it with a
     in eclipse file->import->existing project...
     then run main
 
-### Benchmarks
-
 
 
