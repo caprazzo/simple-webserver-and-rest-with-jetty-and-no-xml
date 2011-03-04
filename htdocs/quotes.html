@@ -1,0 +1,46 @@
+<html>
+	<head>
+    	<title>WebSocket Quotes</title>
+    	<style type="text/css">
+    		body {
+    			font-family: monospace;    	
+    			overflow: hidden;		
+    		}
+    		.main {
+    			padding: 2em;
+    			border: 1px dashed gray;
+    		}
+    		.content {
+			  width: 700px ;
+			  margin-left: auto ;
+			  margin-right: auto ;
+			}
+			#quotes {
+				
+			}
+    		.quote {
+    			background-color: #8CCDFF;
+    			padding: 0.25em;
+    			padding-top: 1em;
+    			padding-bottom: 0.5em;
+    			margin-top: 3px;
+    		}
+    		.alt {
+    			background-color: #B8E0FF;
+    		}    		
+    		.new { background-color: yellow; }
+    	</style>
+    	<script src="quotes.js"></script>    
+	</head>
+	<body onload="main()">
+		<div class="content main">		
+			Demo of content push using WebSockets.<br/>	
+			The server will keep sending quotes from <strong>The Hitchhicker Guide To the galaxy</strong>.<br/>
+			Enjoy.	
+		</div>
+		<div id="quotes" class="content"></div>						
+	</body>
+</html>
+        
+        
+        
