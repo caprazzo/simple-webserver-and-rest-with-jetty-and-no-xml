@@ -1,4 +1,4 @@
-# Simple webserver and REST with jetty and NO XML
+# Simple webserver with WebSocket and REST using jetty and NO XML
 
 This is a very simple RESTful web service implemented using jetty embedded. I wrote this to answer the pressing question: do I need a container a a ton of xml to get anything done with java and the web? 
 
@@ -20,6 +20,8 @@ I gave the thing 8m memory (-Xmx8m - yes, megabytes) and tried to push it with a
     Time taken for tests:   30.371 seconds
     Requests per second:    1646.31 [#/sec] (mean)    
     
+#### WebSocket demo
+* browse to /quotes.html to receive a countinuous supply of quotes from The Hitchhicker Guide To the galaxy   
 
 #### Key-Value store api
 * GET /store/<key> - the value associated with key or 404

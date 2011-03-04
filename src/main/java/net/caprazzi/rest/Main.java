@@ -1,24 +1,36 @@
 package net.caprazzi.rest;
 
-import java.net.URL;
+import java.io.InputStream;
 
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
 public class Main<T> {
 	public static void main(String[] args) throws Exception {
 
-		Server server = new Server(8080);
+		if (args.length != 1) {
+			System.err.println("Please specify the port number");
+			return;
+		}
+		Integer port;
+        try {
+            port = Integer.parseInt(args[0]);
+        }
+        catch(NumberFormatException ex) {
+            System.err.println("port_number must be a number");
+            return;
+        
+        }
+                	
+		Server server = new Server(port);
 		 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
         server.setHandler(context);
- 
-        // configure the default servlet to serve static files from "htdocs"
-        context.getInitParams().put("org.eclipse.jetty.servlet.Default.resourceBase", "htdocs");
-        context.addServlet(new ServletHolder(new DefaultServlet()),"/");
+                
+        // configure the default servlet to serve static files from "htdocs" in the classpath   
+        context.addServlet(new ServletHolder(new ClasspathFilesServlet("/htdocs")),"/");
         
         // use /uuid to get a fresh id
         context.addServlet(new ServletHolder(new UUIDServlet()), "/uuid");
@@ -31,8 +43,8 @@ public class Main<T> {
         context.addServlet(new ServletHolder(publishServlet), "/quotes");
         
         // setup the quote service
-        URL guideDataURL = Main.class.getClassLoader().getResource("hitchhiker_guide_to_the_galaxy_quotes.txt");
-        final QuoteService guideQuoteService = QuoteService.fromFile(guideDataURL.getFile());
+        InputStream stream = Main.class.getClassLoader().getResourceAsStream("hitchhiker_guide_to_the_galaxy_quotes.txt");        
+        final QuoteService guideQuoteService = QuoteService.fromInputStream(stream);
         
         // send out a new quote every 3 to 10 seconds
         new RandomTimer(3, 10) {			
@@ -42,7 +54,7 @@ public class Main<T> {
 			}
 		}; 		
         
-		// start theserver
+		// start the server
         server.start();
         server.join();		
 	}
