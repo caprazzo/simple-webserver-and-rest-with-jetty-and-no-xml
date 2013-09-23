@@ -51,3 +51,7 @@ I gave the thing 8m memory (-Xmx8m - yes, megabytes) and tried to push it with a
 
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/mcaprari/simple-webserver-and-rest-with-jetty-and-no-xml/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
